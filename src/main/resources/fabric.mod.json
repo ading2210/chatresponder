@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "chatresponder",
+  "version": "${version}",
+  "name": "chatresponder",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/chatresponder/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [],
+    "main": [
+      "net.ading2210.chatresponder.ChatResponder"
+    ]
+  },
+  "mixins": [
+    "chatresponder.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "fabric": "*",
+    "minecraft": "1.18.2"
+  }
+}

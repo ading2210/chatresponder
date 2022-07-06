@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.ading2210.chatresponder.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "ClientPlayerEntityMixin",
+    "OptionsScreenMixin",
+    "ChatHudListenerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
