@@ -66,6 +66,7 @@ public class EditRegexItemsScreen extends Screen {
             RegexItem regexEntry = OptionsHandler.options.regexEntries.get(finalI);
             regexEntry.regexWidget = new TextFieldWidget(this.textRenderer, 8, currentY+30+this.yOffset, this.width-40, 16, new LiteralText(""));
             regexEntry.regexWidget.setText(regexEntry.regex);
+            regexEntry.regexWidget.setMaxLength(99999);
 
             regexEntry.deleteButton = new ButtonWidget(this.width-28, currentY+28+this.yOffset, 20, 20, new LiteralText("-"), button -> {
                 OptionsHandler.options.regexEntries.remove(finalI);
@@ -81,6 +82,7 @@ public class EditRegexItemsScreen extends Screen {
 
                 CommandItem commandItem = regexEntry.steps.get(finalJ);
                 commandItem.commandWidget = new TextFieldWidget(this.textRenderer, 18, currentY+30+this.yOffset, this.width-106, 16, new LiteralText(""));
+                commandItem.commandWidget.setMaxLength(256);
                 commandItem.commandWidget.setText(commandItem.command);
 
                 commandItem.deleteButton = new ButtonWidget(this.width-28, currentY+28+this.yOffset, 20, 20, new LiteralText("-"), button -> {
