@@ -65,8 +65,8 @@ public class EditRegexItemsScreen extends Screen {
             int finalI = i;
             RegexItem regexEntry = OptionsHandler.options.regexEntries.get(finalI);
             regexEntry.regexWidget = new TextFieldWidget(this.textRenderer, 8, currentY+30+this.yOffset, this.width-40, 16, new LiteralText(""));
-            regexEntry.regexWidget.setText(regexEntry.regex);
             regexEntry.regexWidget.setMaxLength(99999);
+            regexEntry.regexWidget.setText(regexEntry.regex);
 
             regexEntry.deleteButton = new ButtonWidget(this.width-28, currentY+28+this.yOffset, 20, 20, new LiteralText("-"), button -> {
                 OptionsHandler.options.regexEntries.remove(finalI);
@@ -138,6 +138,16 @@ public class EditRegexItemsScreen extends Screen {
         this.addDrawableChild(this.cancelButton);
 
         this.saveButton = new ButtonWidget(100, this.height-25, 90, 20, new LiteralText("Save"), button -> {
+            for (int i = 0; i < OptionsHandler.options.regexEntries.size(); i++) {
+                RegexItem regexEntry = OptionsHandler.options.regexEntries.get(i);
+                regexEntry.regex = regexEntry.regexWidget.getText();
+                for (int j = 0; j < regexEntry.steps.size(); j++) {
+                    CommandItem commandItem = regexEntry.steps.get(j);
+                    commandItem.command = commandItem.commandWidget.getText();
+                    commandItem.delay = Integer.parseInt(commandItem.delayWidget.getText());
+                }
+            }
+            
             OptionsHandler.saveConfig();
             ChatResponder.regexCompiled = new ArrayList<>();
             for (RegexItem regexItem1: OptionsHandler.options.regexEntries) {
