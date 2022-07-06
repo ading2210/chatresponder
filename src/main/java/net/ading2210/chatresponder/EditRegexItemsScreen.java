@@ -143,12 +143,7 @@ public class EditRegexItemsScreen extends Screen {
                 regexEntry.regex = regexEntry.regexWidget.getText();
                 for (int j = 0; j < regexEntry.steps.size(); j++) {
                     CommandItem commandItem = regexEntry.steps.get(j);
-                    if (commandItem.commandWidget.getText().length() > 0) {
-                        commandItem.command = commandItem.commandWidget.getText();
-                    }
-                    else {
-                        commandItem.command = "";
-                    }
+                    commandItem.command = commandItem.commandWidget.getText();
                     if (regexEntry.addDelayWidget.getText().length() > 0 && regexEntry.addDelayWidget.getText().matches("\\d++")) {
                         commandItem.delay = Integer.parseInt(commandItem.delayWidget.getText());
                     }
